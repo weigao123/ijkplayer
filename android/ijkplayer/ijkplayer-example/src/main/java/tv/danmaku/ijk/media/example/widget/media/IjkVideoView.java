@@ -160,7 +160,9 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         mAppContext = context.getApplicationContext();
         mSettings = new Settings(mAppContext);
 
+        // 小窗播放
         initBackground();
+        // 显示区域
         initRenders();
 
         mVideoWidth = 0;
@@ -349,6 +351,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             } else {
                 mMediaPlayer.setDataSource(mUri.toString());
             }
+            // mSurfaceHolder其实是个代理，用来返回真正的 IRenderView
             bindSurfaceHolder(mMediaPlayer, mSurfaceHolder);
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setScreenOnWhilePlaying(true);
@@ -935,6 +938,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
 
     //-------------------------
     // Extend: Render
+    // 显示器
     //-------------------------
     public static final int RENDER_NONE = 0;
     public static final int RENDER_SURFACE_VIEW = 1;

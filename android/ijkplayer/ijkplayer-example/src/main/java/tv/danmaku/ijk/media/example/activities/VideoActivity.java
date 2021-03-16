@@ -48,6 +48,7 @@ import tv.danmaku.ijk.media.example.widget.media.AndroidMediaController;
 import tv.danmaku.ijk.media.example.widget.media.IjkVideoView;
 import tv.danmaku.ijk.media.example.widget.media.MeasureHelper;
 
+// 视频播放页面
 public class VideoActivity extends AppCompatActivity implements TracksFragment.ITrackHolder {
     private static final String TAG = "VideoActivity";
 
@@ -84,6 +85,8 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
 
         // handle arguments
         mVideoPath = getIntent().getStringExtra("videoPath");
+        mVideoPath = "http://czp.cx.qz123.com/mis-upload/2021-01-29/url720p_h264/video_1611912490091.mp4";
+        mVideoPath = "http://czp.cx.qz123.com/mis-upload/2021-01-29/url720p_h265/video_1611912490091.mp4";
 
         Intent intent = getIntent();
         String intentAction = intent.getAction();
@@ -138,7 +141,9 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
         mVideoView = (IjkVideoView) findViewById(R.id.video_view);
+        // 显示和隐藏控制上下导航栏
         mVideoView.setMediaController(mMediaController);
+        // 信息显示框
         mVideoView.setHudView(mHudView);
         // prefer mVideoPath
         if (mVideoPath != null)
